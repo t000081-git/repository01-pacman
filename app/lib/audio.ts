@@ -18,10 +18,12 @@ class AudioEngine {
       const Ctor =
         (window as any).AudioContext || (window as any).webkitAudioContext;
       if (!Ctor) return null;
-      this.ctx = new Ctor();
-      this.masterGain = this.ctx.createGain();
-      this.masterGain.gain.value = this.muted ? 0 : 0.4;
-      this.masterGain.connect(this.ctx.destination);
+      const ctx = new Ctor() as AudioContext;
+      const masterGain = ctx.createGain();
+      masterGain.gain.value = this.muted ? 0 : 0.4;
+      masterGain.connect(ctx.destination);
+      this.ctx = ctx;
+      this.masterGain = masterGain;
     }
     if (this.ctx.state === "suspended") {
       this.ctx.resume().catch(() => {});

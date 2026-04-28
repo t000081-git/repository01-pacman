@@ -496,7 +496,7 @@ export interface RenderOpts {
   cellSize: number;
 }
 
-const WALL_COLOR = "#1f3bff";
+const WALL_COLOR = "#1426aa";
 const WALL_HIGHLIGHT = "#3b82ff";
 const DOOR_COLOR = "#ffb8de";
 
